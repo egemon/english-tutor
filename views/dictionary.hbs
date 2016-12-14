@@ -1,0 +1,31 @@
+<ul>
+    {{#each dictionary}}
+        <li id="{{@key}}">
+            <span>{{@key}}</span>
+            <input class="answerInput" type="text" data-answer="{{this}}">
+            <span id="{{this}}"></span>
+        </li>
+    {{/each}}
+</ul>
+<script>
+    [...document.getElementsByClassName('answerInput')].forEach((input)=>{
+        input.addEventListener('blur', (e) => {
+          let userAnswer = e.target.value;
+          let correctAnswer = input.getAttribute('data-answer');
+            document.getElementById(correctAnswer).innerHTML = correctAnswer === userAnswer ? '+' : `-, ${correctAnswer}`
+        })
+    });
+    <!--var dictionary = {};-->
+    <!--{{#each dictionary}}-->
+        <!--dictionary['{{@key}}']='{{this}}';-->
+    <!--{{/each}}-->
+    <!--const keys = Object.keys(dictionary);-->
+    <!--let answer, question, result;-->
+    <!--for(var i = 1; i < keys.length; i++) {-->
+        <!--question = keys[Math.round(Math.random()*(keys.length - 1))];-->
+        <!--answer = prompt(question);-->
+        <!--result = dictionary[question] === answer ? '+' : `-, ${dictionary[question]}`;-->
+        <!--document.write(`${question} - ${answer}, ${result}-->
+        <!--`)-->
+    <!--}-->
+</script>
